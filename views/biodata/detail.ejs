@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/navbar'); %>
+
+        <div class="container-fluid">
+            <div class="row">
+                <%- include('../partials/sidebar'); %>
+
+                    <main role="main" class="col-md-9 ms-sm-auto col-lg-10 pt-3 px-4">
+                        <div
+                            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                            <h1 class="h2">Detail Biodata <%= game.username %>
+                            </h1>
+                        </div>
+
+                        <br>
+
+                        <p>
+                            Username: <%= game.username %>
+                        </p>
+                        <p>
+                            Name: <%= game.Biodatum ? game.Biodatum.name : '' %>
+                        </p>
+                        <p>
+                            Hobby: <%= game.Biodatum ? game.Biodatum.hobby : '' %>
+                        </p>
+
+                        <br>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Played At</th>
+                                        <th scope="col">Score</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <% if (game.Histories.length> 0) { %>
+                                        <% game.Histories.forEach((history)=> { %>
+                                            <tr>
+                                                <td>
+                                                    <%= history.playedAt %>
+                                                </td>
+                                                <td>
+                                                    <%= history.score %>
+                                                </td>
+                                            </tr>
+                                            <% }); %>
+                                                <% } else { %>
+                                                    <tr>
+                                                        <td colspan="2" class="text-center">Empty Data </td>
+                                                    </tr>
+                                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </main>
+            </div>
+        </div>
+
+        <%- include('../partials/script'); %>
+</body>
+
+</html>
